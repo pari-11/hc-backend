@@ -202,7 +202,15 @@ async def detect_video(file: UploadFile = File(...)):
         save_to_history(file.filename, result_data)
         return result_data
 
+    if __name__ == "__main__":
+    import uvicorn
+    import os
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
+
+
     except Exception as e:
         return JSONResponse(content={"error": str(e)}, status_code=500)
     
+
     
